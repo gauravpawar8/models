@@ -61,13 +61,13 @@ flags.DEFINE_string('train_logdir', None,
 flags.DEFINE_integer('log_steps', 10,
                      'Display logging information at every log_steps.')
 
-flags.DEFINE_integer('save_interval_secs', 1200,
+flags.DEFINE_integer('save_interval_secs', 240,
                      'How often, in seconds, we save the model to disk.')
 
-flags.DEFINE_integer('save_summaries_secs', 600,
+flags.DEFINE_integer('save_summaries_secs', 30,
                      'How often, in seconds, we compute the summaries.')
 
-flags.DEFINE_boolean('save_summaries_images', False,
+flags.DEFINE_boolean('save_summaries_images', True,
                      'Save sample inputs, labels, and semantic predictions as '
                      'images to summary.')
 
@@ -78,19 +78,19 @@ flags.DEFINE_enum('learning_policy', 'poly', ['poly', 'step'],
 
 # Use 0.007 when training on PASCAL augmented training set, train_aug. When
 # fine-tuning on PASCAL trainval set, use learning rate=0.0001.
-flags.DEFINE_float('base_learning_rate', .0001,
+flags.DEFINE_float('base_learning_rate', .001,
                    'The base learning rate for model training.')
 
 flags.DEFINE_float('learning_rate_decay_factor', 0.1,
                    'The rate to decay the base learning rate.')
 
-flags.DEFINE_integer('learning_rate_decay_step', 2000,
+flags.DEFINE_integer('learning_rate_decay_step', 200,
                      'Decay the base learning rate at a fixed step.')
 
 flags.DEFINE_float('learning_power', 0.9,
                    'The power value used in the poly learning policy.')
 
-flags.DEFINE_integer('training_number_of_steps', 30000,
+flags.DEFINE_integer('training_number_of_steps', 3000,
                      'The number of steps used for training')
 
 flags.DEFINE_float('momentum', 0.9, 'The momentum value to use')
@@ -98,7 +98,7 @@ flags.DEFINE_float('momentum', 0.9, 'The momentum value to use')
 # When fine_tune_batch_norm=True, use at least batch size larger than 12
 # (batch size more than 16 is better). Otherwise, one could use smaller batch
 # size and set fine_tune_batch_norm=False.
-flags.DEFINE_integer('train_batch_size', 8,
+flags.DEFINE_integer('train_batch_size', 1,
                      'The number of images in each batch during training.')
 
 # For weight_decay, use 0.00004 for MobileNet-V2 or Xcpetion model variants.
@@ -106,7 +106,7 @@ flags.DEFINE_integer('train_batch_size', 8,
 flags.DEFINE_float('weight_decay', 0.00004,
                    'The value of the weight decay for training.')
 
-flags.DEFINE_multi_integer('train_crop_size', [513, 513],
+flags.DEFINE_multi_integer('train_crop_size', [97, 97],
                            'Image crop size [height, width] during training.')
 
 flags.DEFINE_float('last_layer_gradient_multiplier', 1.0,
@@ -122,7 +122,7 @@ flags.DEFINE_string('tf_initial_checkpoint', None,
                     'The initial checkpoint in tensorflow format.')
 
 # Set to False if one does not want to re-use the trained classifier weights.
-flags.DEFINE_boolean('initialize_last_layer', True,
+flags.DEFINE_boolean('initialize_last_layer', False,
                      'Initialize the last layer.')
 
 flags.DEFINE_boolean('last_layers_contain_logits_only', False,
@@ -136,7 +136,7 @@ flags.DEFINE_float('slow_start_learning_rate', 1e-4,
 
 # Set to True if one wants to fine-tune the batch norm parameters in DeepLabv3.
 # Set to False and use small batch size to save GPU memory.
-flags.DEFINE_boolean('fine_tune_batch_norm', True,
+flags.DEFINE_boolean('fine_tune_batch_norm', False,
                      'Fine tune the batch norm parameters or not.')
 
 flags.DEFINE_float('min_scale_factor', 0.5,
