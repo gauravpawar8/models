@@ -59,22 +59,22 @@ import tensorflow as tf
 FLAGS = tf.app.flags.FLAGS
 
 tf.app.flags.DEFINE_string('image_folder',
-                           './VOCdevkit/VOC2012/JPEGImages',
+                           '/media/second_drive/uia72240/repos/sides/models/research/deeplab/datasets/pascal_voc_seg/VOCdevkit/VOC2012/JPEGImages',
                            'Folder containing images.')
 
 tf.app.flags.DEFINE_string(
     'semantic_segmentation_folder',
-    './VOCdevkit/VOC2012/SegmentationClassRaw',
+    '/media/second_drive/uia72240/repos/sides/models/research/deeplab/datasets/pascal_voc_seg/VOCdevkit/VOC2012/SegmentationClassRaw',
     'Folder containing semantic segmentation annotations.')
 
 tf.app.flags.DEFINE_string(
     'list_folder',
-    './VOCdevkit/VOC2012/ImageSets/Segmentation',
+    '/media/second_drive/uia72240/repos/sides/models/research/deeplab/datasets/pascal_voc_seg/VOCdevkit/VOC2012/ImageSets/Segmentation',
     'Folder containing lists for training and validation')
 
 tf.app.flags.DEFINE_string(
     'output_dir',
-    './tfrecord',
+    '/media/second_drive/uia72240/repos/sides/models/research/deeplab/datasets/pascal_voc_seg/tfrecord',
     'Path to save converted SSTable of TensorFlow examples.')
 
 
